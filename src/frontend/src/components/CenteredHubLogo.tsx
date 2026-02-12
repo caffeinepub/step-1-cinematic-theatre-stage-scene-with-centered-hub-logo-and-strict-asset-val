@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { WHY_STOP_LOGO_FILENAME } from '@/utils/logoAssetFilenames';
 
 export function CenteredHubLogo() {
   // Two-phase render: start with key 0, then switch to key 1 on mount
@@ -30,7 +31,7 @@ export function CenteredHubLogo() {
       {/* Center hub logo - key forces unmount/remount for asset rebinding */}
       <img
         key={imageKey}
-        src="logo2-1.png"
+        src={WHY_STOP_LOGO_FILENAME}
         alt="Hub Logo"
         className="relative z-10 select-none"
         style={{

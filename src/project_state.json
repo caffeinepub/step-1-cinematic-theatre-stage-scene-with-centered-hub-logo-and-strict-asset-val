@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 23,
+  "projectStateVersion": 33,
   "summary": "Build STEP 1 visuals: a full-screen cinematic theatre/stage scene with fixed centered hub logo and background silhouette logo, now bound to the uploaded “-1” asset filenames only (logo2-1.png, jacques-johnson-1.png, kream-kuntree-1.png, rl-stafford-1.png), with strict asset validation and fail-loudly missing-asset overlay.",
   "architectural_notes": [
     "Strict STEP 1 scope only: do not add ECG, heartbeat audio, carousel, artist cards, redirects/links, or any additional UI beyond specified visuals.",
@@ -9,10 +9,12 @@
     "Asset filename bindings updated: MUST use only the detected “-1” files (logo2-1.png, jacques-johnson-1.png, kream-kuntree-1.png, rl-stafford-1.png). Do not reference logo2.png or any original filenames; no substitutions/placeholders.",
     "Support an explicit asset refresh/resync flow for the draft/preview: re-check accessible project image assets and resync when assets are not accessible; never substitute or use placeholders.",
     "Hub logo asset rebinding: remove and reinsert the centered hub logo image using exactly logo2-1.png; no layout/styling changes.",
-    "Path correction: reference logo asset as \"logo2-1.png\" (no leading \"/\") for both center hub logo and background silhouette; no layout/styling changes."
+    "Path correction: reference logo asset as \"logo2-1.png\" (no leading \"/\") for both center hub logo and background silhouette; no layout/styling changes.",
+    "Runtime path safeguard: on page load, normalize <img> src for known required assets by stripping leading \"/\" when present; do not change any layout/styling."
   ],
   "known_issues": [
-    "Publish/build domain name is invalid: \"step-1:-cinematic-theatre/stage-scene-with-centere\" fails constraint (must be 5–50 chars and only letters/numbers/hyphens)."
+    "Publish/build domain name is invalid: \"step-1:-cinematic-theatre/stage-scene-with-centere\" fails constraint (must be 5–50 chars and only letters/numbers/hyphens).",
+    "Preview is rewriting image src to absolute root paths (e.g., \"/logo2-1.png\"), breaking asset loading; needs normalization to relative paths."
   ],
   "isFixRequest": true,
   "existing_features": [
@@ -159,6 +161,30 @@
         "REQ-18"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-provide-a-user-visible-rebuild-preview-action-english-text-that-forces-a-full-preview-rebuild-reload-after-image-path-updates-so-the-updated-image-paths-are-definitely-used-this-should-be-the-same-underlying-behavior-as-the-current-hard-reload-resync-i-e-a-full-page-reload-and-must-re-run-the-strict-required-asset-validation-and-show-the-asset-scan-results-gating-screen-again-before-rendering-the-theatre-scene",
+      "title": "Provide a user-visible “Rebuild Preview” action (English text) that forces a full preview rebuild/reload after image path updates, so the updated image paths are definitely used. This should be the same underlying behavior as the current hard reload resync (i.e., a full page reload), and must re-run the strict required-asset validation and show the “Asset Scan Results” gating screen again before rendering the theatre scene.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-app-does-not-use-absolute-root-paths-no-leading-for-any-of-the-required-image-assets-logo2-1-png-jacques-johnson-1-png-kream-kuntree-1-png-rl-stafford-1-png-update-all-relevant-code-paths-including-asset-validation-loading-to-use-relative-asset-references-only-e-g-logo2-1-png-not-logo2-1-png",
+      "title": "Ensure the app does not use absolute root paths (no leading \"/\") for any of the required image assets: logo2-1.png, jacques-johnson-1.png, kream-kuntree-1.png, rl-stafford-1.png. Update all relevant code paths (including asset validation/loading) to use relative asset references only (e.g., \"logo2-1.png\" not \"/logo2-1.png\").",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-runtime-safeguard-that-runs-on-initial-page-load-scan-all-img-elements-in-the-document-and-if-an-image-src-attribute-via-getattribute-src-and-or-the-current-resolved-src-starts-with-and-the-filename-matches-one-of-these-known-assets-logo2-1-png-jacques-johnson-1-png-kream-kuntree-1-png-rl-stafford-1-png-rewrite-the-dom-attribute-to-the-same-filename-without-the-leading-slash-e-g-logo2-1-png-logo2-1-png",
+      "title": "Add a runtime safeguard that runs on initial page load: scan all <img> elements in the document, and if an image src attribute (via getAttribute(\"src\") and/or the current resolved src) starts with \"/\" and the filename matches one of these known assets (logo2-1.png, jacques-johnson-1.png, kream-kuntree-1.png, rl-stafford-1.png), rewrite the DOM attribute to the same filename without the leading slash (e.g., \"/logo2-1.png\" -> \"logo2-1.png\").",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -202,6 +228,28 @@
       "id": "AR-11",
       "summary": "Path correction only: update center hub logo and background silhouette logo image references from \"/logo2-1.png\" to \"logo2-1.png\" (remove leading slash); do not change layout or styling.",
       "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Audit the frontend to ensure the Center hub logo and Background silhouette logo image references use the exact relative path \"logo2-1.png\" (no leading slash), and that there are no remaining references to \"/logo2-1.png\" for these two logo bindings. This is a path correction/verification only; do not change any layout or styling.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Add runtime safeguard on page load: scan all <img> elements and, if src/attribute starts with \"/\" and matches one of the known required asset filenames (logo2-1.png, jacques-johnson-1.png, kream-kuntree-1.png, rl-stafford-1.png), rewrite to relative path without leading slash; ensure no absolute image paths are used; path fix only (no layout/styling changes).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "After implementing the relative-path changes and the runtime safeguard, verify that the centered hub logo and the background silhouette logo render correctly using the relative filename \"logo2-1.png\" and that their existing styling and layering are unchanged.",
+      "reqIds": [
+        "REQ-23"
+      ],
       "status": "pending"
     }
   ],

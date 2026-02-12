@@ -125,7 +125,7 @@ export function PreviewSyncControls({ onRefresh, onResync, onPublish }: PreviewS
                 className="w-full justify-start gap-2 bg-gray-950 border-gray-700 hover:bg-gray-800 text-white"
               >
                 <RotateCw className="h-4 w-4" />
-                Resync Preview
+                Rebuild Preview
               </Button>
               <Button
                 onClick={handlePublishClick}

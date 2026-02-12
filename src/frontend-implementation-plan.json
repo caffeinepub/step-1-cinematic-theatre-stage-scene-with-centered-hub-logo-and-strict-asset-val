@@ -1,36 +1,41 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Correct logo2-1.png image path references (remove leading slash)",
+  "title": "Bind WHY STOP MUSIC GROUP hub + silhouette logos exclusively to logo2-1.png",
   "requirements": [
     {
-      "id": "REQ-17",
-      "summary": "Correct CenteredHubLogo image src to use a relative asset path (no leading slash) without changing layout/styling or remount behavior.",
+      "id": "REQ-1",
+      "summary": "Ensure both the centered hub logo and background silhouette logo use logo2-1.png and remove any logo2.png bindings.",
       "acceptanceCriteria": [
-        "In CenteredHubLogo.tsx, the <img> src string is exactly \"logo2-1.png\" (no leading slash).",
-        "The logo remains exactly centered and layered above the theatre scene as before (no visual/layout change).",
-        "The existing key-based unmount/remount behavior remains intact (no removal of the imageKey logic)."
+        "The centered hub logo renders using logo2-1.png.",
+        "The background silhouette logo renders using logo2-1.png.",
+        "There are no references to logo2.png in the code paths that bind/render these two logos."
       ],
       "file_operations": [
+        {
+          "path": "frontend/src/utils/logoAssetFilenames.ts",
+          "operation": "create",
+          "description": "Create a centralized, single-source constant for the hub and silhouette logo filename set to \"logo2-1.png\" to prevent accidental reintroduction of \"logo2.png\" references."
+        },
         {
           "path": "frontend/src/components/CenteredHubLogo.tsx",
           "operation": "modify",
-          "description": "Change the hub logo <img> src from \"/logo2-1.png\" to \"logo2-1.png\" only; preserve all existing layout, sizing, positioning, z-index layering, halo/orbit ring styling, and the current key-based unmount/remount (imageKey) behavior."
-        }
-      ]
-    },
-    {
-      "id": "REQ-18",
-      "summary": "Correct BackgroundSilhouetteLogo image src to use a relative asset path (no leading slash) without changing styling.",
-      "acceptanceCriteria": [
-        "In BackgroundSilhouetteLogo.tsx, the <img> src string is exactly \"logo2-1.png\" (no leading slash).",
-        "The silhouette remains a single, centered instance at the same scale and opacity as before (no visual/style change)."
-      ],
-      "file_operations": [
+          "description": "Replace the hardcoded hub logo src with the centralized constant from frontend/src/utils/logoAssetFilenames.ts and ensure the binding remains \"logo2-1.png\" (no \"logo2.png\" references)."
+        },
         {
           "path": "frontend/src/components/BackgroundSilhouetteLogo.tsx",
           "operation": "modify",
-          "description": "Change the silhouette <img> src from \"/logo2-1.png\" to \"logo2-1.png\" only; do not change opacity, size, positioning, z-index, or any other styling/structure."
+          "description": "Replace the hardcoded silhouette logo src with the centralized constant from frontend/src/utils/logoAssetFilenames.ts and ensure the binding remains \"logo2-1.png\" (no \"logo2.png\" references)."
+        },
+        {
+          "path": "frontend/src/utils/requiredAssetFilenames.ts",
+          "operation": "modify",
+          "description": "Confirm required asset validation includes \"logo2-1.png\" (and does not add or depend on \"logo2.png\") so the asset scan/overlays validate the correct uploaded logo."
+        },
+        {
+          "path": "frontend/src/utils/normalizeKnownAssetImgSrcs.ts",
+          "operation": "modify",
+          "description": "Ensure the known-asset normalization logic continues to normalize only the required assets list (including \"logo2-1.png\") and does not introduce any handling or references to \"logo2.png\"."
         }
       ]
     }

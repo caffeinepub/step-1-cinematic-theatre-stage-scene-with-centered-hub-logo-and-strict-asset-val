@@ -62,7 +62,7 @@ export function AssetScanResultsOverlay({ assets, onContinue, onRefresh, onResyn
               className="gap-2"
             >
               <RotateCw className="w-5 h-5" />
-              Resync Preview
+              Rebuild Preview
             </Button>
           )}
           <Button

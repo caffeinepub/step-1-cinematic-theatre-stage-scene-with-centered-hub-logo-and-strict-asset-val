@@ -1,10 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Fix incorrect image src paths for the hub and background silhouette logos by removing the leading slash.
+**Goal:** Ensure the WHY STOP MUSIC GROUP logo uses the uploaded `logo2-1.png` everywhere it appears (center hub and background silhouette), with no references to `logo2.png`.
 
 **Planned changes:**
-- In `frontend/src/components/CenteredHubLogo.tsx`, change the hub logo `<img>` src from `"/logo2-1.png"` to `"logo2-1.png"` only, preserving existing layout/styling and the key-based unmount/remount behavior.
-- In `frontend/src/components/BackgroundSilhouetteLogo.tsx`, change the silhouette logo `<img>` src from `"/logo2-1.png"` to `"logo2-1.png"` only, preserving existing opacity, size, positioning, and styling.
+- Update the center hub logo asset binding to use `logo2-1.png`.
+- Update the background silhouette logo asset binding to use `logo2-1.png`.
+- Remove/replace any project references for these bindings that point to `logo2.png`.
 
-**User-visible outcome:** Both the centered hub logo and the background silhouette logo continue to appear exactly as before, but now load correctly using the corrected (no-leading-slash) asset path.
+**User-visible outcome:** The application displays the WHY STOP MUSIC GROUP logo using `logo2-1.png` for both the center hub logo and the background silhouette logo, with no instances using `logo2.png`.

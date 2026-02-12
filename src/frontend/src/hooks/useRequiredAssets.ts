@@ -1,11 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-
-const REQUIRED_ASSETS = [
-  'logo2-1.png',
-  'jacques-johnson-1.png',
-  'kream-kuntree-1.png',
-  'rl-stafford-1.png'
-];
+import { REQUIRED_ASSET_FILENAMES } from '../utils/requiredAssetFilenames';
 
 export interface AssetValidationResult {
   filename: string;
@@ -25,7 +19,7 @@ export function useRequiredAssets() {
     
     const results: AssetValidationResult[] = [];
     
-    for (const filename of REQUIRED_ASSETS) {
+    for (const filename of REQUIRED_ASSET_FILENAMES) {
       try {
         // Fetch with cache-busting options when refreshing
         const fetchOptions: RequestInit = bypassCache
@@ -39,7 +33,8 @@ export function useRequiredAssets() {
             }
           : {};
         
-        const response = await fetch(`/${filename}?t=${Date.now()}`, fetchOptions);
+        // Use relative path (no leading slash) with cache-busting timestamp
+        const response = await fetch(`${filename}?t=${Date.now()}`, fetchOptions);
         if (!response.ok) {
           setMissingAsset(filename);
           setIsChecking(false);

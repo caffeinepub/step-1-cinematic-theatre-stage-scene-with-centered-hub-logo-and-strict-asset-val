@@ -1,34 +1,29 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-12T02:29:31.702Z",
+  "generatedAt": "2026-02-12T06:35:40.654Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 2,
+    "total": 1,
+    "implemented": 1,
     "items": [
       {
-        "id": "REQ-17",
-        "summary": "Update the centered hub logo image reference in frontend/src/components/CenteredHubLogo.tsx to use \"logo2-1.png\" instead of \"/logo2-1.png\" (path correction only). Do not change any layout, sizing, positioning, z-index layering, halo/orbit ring styling, or the existing asset rebinding behavior (the key-based unmount/remount).",
+        "id": "REQ-1",
+        "summary": "Ensure both the centered hub logo and background silhouette logo use logo2-1.png and remove any logo2.png bindings.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/CenteredHubLogo.tsx"
+          "frontend/src/utils/logoAssetFilenames.ts",
+          "frontend/src/components/CenteredHubLogo.tsx",
+          "frontend/src/components/BackgroundSilhouetteLogo.tsx",
+          "frontend/src/utils/requiredAssetFilenames.ts",
+          "frontend/src/utils/normalizeKnownAssetImgSrcs.ts"
         ],
         "matchedFiles": [
-          "frontend/src/components/CenteredHubLogo.tsx"
-        ]
-      },
-      {
-        "id": "REQ-18",
-        "summary": "Update the background silhouette logo image reference in frontend/src/components/BackgroundSilhouetteLogo.tsx to use \"logo2-1.png\" instead of \"/logo2-1.png\" (path correction only). Do not change opacity, size, positioning, or any styling.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/BackgroundSilhouetteLogo.tsx"
-        ],
-        "matchedFiles": [
+          "frontend/src/utils/logoAssetFilenames.ts",
+          "frontend/src/components/CenteredHubLogo.tsx",
           "frontend/src/components/BackgroundSilhouetteLogo.tsx"
         ]
       }
@@ -37,9 +32,11 @@
   "changedFiles": [
     "build-request.json",
     "feature_evidence.json",
+    "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
     "frontend/src/components/BackgroundSilhouetteLogo.tsx",
     "frontend/src/components/CenteredHubLogo.tsx",
+    "frontend/src/utils/logoAssetFilenames.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

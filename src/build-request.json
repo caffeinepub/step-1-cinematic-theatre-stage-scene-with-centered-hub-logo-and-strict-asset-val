@@ -1,53 +1,16 @@
 {
   "kind": "build_request",
-  "title": "Correct hub and silhouette logo image paths (remove leading slash)",
+  "title": "Ensure WHY STOP MUSIC GROUP logo uses uploaded logo2-1.png (no logo2.png references)",
   "priority": "normal",
-  "requirements": [
-    {
-      "id": "REQ-17",
-      "text": "Update the centered hub logo image reference in frontend/src/components/CenteredHubLogo.tsx to use \"logo2-1.png\" instead of \"/logo2-1.png\" (path correction only). Do not change any layout, sizing, positioning, z-index layering, halo/orbit ring styling, or the existing asset rebinding behavior (the key-based unmount/remount).",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-user-1"
-        ],
-        "quotes": [
-          "Change: \"/logo2-1.png\" To: \"logo2-1.png\" Apply this to: - Center hub logo ... This is a path correction only. Do not change layout or styling."
-        ]
-      },
-      "acceptanceCriteria": [
-        "In CenteredHubLogo.tsx, the <img> src string is exactly \"logo2-1.png\" (no leading slash).",
-        "The logo remains exactly centered and layered above the theatre scene as before (no visual/layout change).",
-        "The existing key-based unmount/remount behavior remains intact (no removal of the imageKey logic)."
-      ]
-    },
-    {
-      "id": "REQ-18",
-      "text": "Update the background silhouette logo image reference in frontend/src/components/BackgroundSilhouetteLogo.tsx to use \"logo2-1.png\" instead of \"/logo2-1.png\" (path correction only). Do not change opacity, size, positioning, or any styling.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-user-1"
-        ],
-        "quotes": [
-          "Change: \"/logo2-1.png\" To: \"logo2-1.png\" Apply this to: - Background silhouette logo ... This is a path correction only. Do not change layout or styling."
-        ]
-      },
-      "acceptanceCriteria": [
-        "In BackgroundSilhouetteLogo.tsx, the <img> src string is exactly \"logo2-1.png\" (no leading slash).",
-        "The silhouette remains a single, centered instance at the same scale and opacity as before (no visual/style change)."
-      ]
-    }
-  ],
+  "requirements": [],
   "constraints": [
-    "Path correction only: change \"/logo2-1.png\" to \"logo2-1.png\" for the centered hub logo and background silhouette logo.",
-    "Do not change layout, sizing, positioning, z-index, or styling for either logo component.",
-    "Do not modify frontend immutable paths listed in SYSTEM_CONTEXT."
+    "Use the uploaded logo file logo2-1.png for both the center hub logo and the background silhouette logo.",
+    "Do not reference logo2.png anywhere in the project for these logo bindings.",
+    "Use English for any user-facing text."
   ],
   "nonGoals": [
-    "Do not change strict startup asset validation filenames or logic in useRequiredAssets (unless required by a separate request).",
-    "Do not introduce placeholder images, substitutions, or fallback assets.",
-    "Do not redesign the theatre scene or any overlays/controls."
+    "Changing the theatre/stage scene visuals, layout, sizing, z-index layering, halo/orbit ring styling, or any other existing styling unrelated to swapping logo assets.",
+    "Adding new logo variants or placeholder/substitute images."
   ],
   "imageRequirements": {
     "required": [],

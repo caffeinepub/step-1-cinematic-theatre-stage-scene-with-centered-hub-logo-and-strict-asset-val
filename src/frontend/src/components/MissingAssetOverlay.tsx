@@ -39,7 +39,7 @@ export function MissingAssetOverlay({ filename, onRefresh, onResync }: MissingAs
                 className="gap-2"
               >
                 <RotateCw className="w-5 h-5" />
-                Resync Preview
+                Rebuild Preview
               </Button>
             )}
           </div>
