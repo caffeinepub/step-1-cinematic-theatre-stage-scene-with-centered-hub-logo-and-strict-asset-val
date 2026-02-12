@@ -1,38 +1,36 @@
 {
   "kind": "build_request",
-  "title": "Add asset rescan screen that lists detected required files before rendering scene",
+  "title": "Rebind centered hub logo image (remove + reinsert) without layout changes",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-5",
-      "text": "After startup asset validation completes, present a blocking “Asset Scan Results” screen that lists each required asset filename (logo2.png, jacques-johnson.png, kream-kuntree.png, rl-stafford.png) and whether it was successfully detected/loaded, and require the user to explicitly continue before the theatre scene renders. If any required asset is missing, keep the existing strict missing-asset behavior (full-screen overlay with the exact message) and do not allow continuing.",
+      "id": "REQ-16",
+      "text": "Perform an asset rebinding step for the centered hub logo image by forcing the hub logo <img> element to be removed from the DOM and reinserted, while continuing to load ONLY from the exact filename \"/logo2-1.png\". This must not change any layout, sizing, positioning, z-index, halo ring styling, or any other visual styling.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-4"
         ],
         "quotes": [
-          "RESCAN PROJECT ASSETS NOW.\nList detected files before continuing."
+          "Please remove and reinsert the hub logo image.\n\nUse:\nlogo2-1.png\n\nThis is an asset rebinding step.\nDo not change layout or styling."
         ]
       },
       "acceptanceCriteria": [
-        "On initial app load, the app performs the existing strict required-asset checks (fetch + image load) for the exact filenames: logo2.png, jacques-johnson.png, kream-kuntree.png, rl-stafford.png.",
-        "If any asset is missing/unloadable, the app shows the existing MissingAssetOverlay with the exact text format already implemented and does not show the scan results screen.",
-        "If all assets are present, a full-screen blocking overlay appears that lists all four filenames and indicates they were detected/loaded successfully.",
-        "The theatre scene (BackgroundSilhouetteLogo, TheatreStageScene, CenteredHubLogo) does not render until the user clicks a clearly labeled Continue button on the scan results overlay.",
-        "All user-facing text introduced for this feature is in English."
+        "The centered hub logo still references only src \"/logo2-1.png\" and does not introduce any references to \"/logo2.png\" or other filenames.",
+        "There is an explicit, deterministic code path that unmounts and remounts the hub logo image element (remove + reinsert) to rebind the asset.",
+        "No visual/layout/styling changes occur to the hub logo or halo ring: same size, same centering, same z-index layering, same shadows/filters, same pointer-events behavior.",
+        "Existing asset validation, Asset Scan Results gating, and missing-asset enforcement behavior remains unchanged."
       ]
     }
   ],
   "constraints": [
-    "Do not modify any files under frontend/src/components/ui or any other paths listed in frontend.immutablePaths.",
-    "Maintain the existing strict asset validation rules: exact filenames only; no placeholders; no substitutions; missing asset remains a blocking error overlay with the exact message format.",
-    "Backend remains single-actor Motoko; no backend changes are required for this feature."
+    "Do not change the hub logo layout or styling; this change must be asset rebinding only.",
+    "Continue to use the exact filename \"/logo2-1.png\" for the centered hub logo.",
+    "Keep all user-facing text in English."
   ],
   "nonGoals": [
-    "Adding any new STEP 1 features beyond the asset scan listing/continue gate (e.g., ECG/heartbeat audio, carousels, artist cards, links, redirects).",
-    "Implementing true runtime filesystem directory listing from the browser (only validation of known required filenames is in scope).",
-    "Changing the existing theatre scene visuals or logo layering behaviors."
+    "Changing the theatre scene visuals, controls UI, or any other assets.",
+    "Adding new image assets or substituting placeholder images."
   ],
   "imageRequirements": {
     "required": [],

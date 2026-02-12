@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-12T00:26:09.575Z",
+  "generatedAt": "2026-02-12T01:41:08.681Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -11,31 +11,24 @@
     "implemented": 1,
     "items": [
       {
-        "id": "REQ-5",
-        "summary": "After startup asset validation completes, present a blocking “Asset Scan Results” screen that lists each required asset filename (logo2.png, jacques-johnson.png, kream-kuntree.png, rl-stafford.png) and whether it was successfully detected/loaded, and require the user to explicitly continue before the theatre scene renders. If any required asset is missing, keep the existing strict missing-asset behavior (full-screen overlay with the exact message) and do not allow continuing.",
+        "id": "REQ-16",
+        "summary": "Perform an asset rebinding step for the centered hub logo image by forcing the hub logo <img> element to be removed from the DOM and reinserted, while continuing to load ONLY from the exact filename \"/logo2-1.png\". This must not change any layout, sizing, positioning, z-index, halo ring styling, or any other visual styling.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/hooks/useRequiredAssets.ts",
-          "frontend/src/components/AssetScanResultsOverlay.tsx",
-          "frontend/src/App.tsx"
+          "frontend/src/components/CenteredHubLogo.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/hooks/useRequiredAssets.ts",
-          "frontend/src/components/AssetScanResultsOverlay.tsx",
-          "frontend/src/App.tsx"
+          "frontend/src/components/CenteredHubLogo.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
     "build-request.json",
-    "build-template/README.md",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/App.tsx",
-    "frontend/src/components/AssetScanResultsOverlay.tsx",
-    "frontend/src/hooks/useRequiredAssets.ts",
+    "frontend/src/components/CenteredHubLogo.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

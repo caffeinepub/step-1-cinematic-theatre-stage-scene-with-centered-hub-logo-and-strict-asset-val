@@ -2,12 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-after-startup-asset-validation-completes-present-a-blocking-asset-scan-results-screen-that-lists-each-required-asset-filename-logo2-png-jacques-johnson-png-kream-kuntree-png-rl-stafford-png-and-whether-it-was-successfully-detected-loaded-and-require-the-user-to-explicitly-continue-before-the-theatre-scene-renders-if-any-required-asset-is-missing-keep-the-existing-strict-missing-asset-behavior-full-screen-overlay-with-the-exact-message-and-do-not-allow-continuing",
-      "featureTitle": "After startup asset validation completes, present a blocking “Asset Scan Results” screen that lists each required asset filename (logo2.png, jacques-johnson.png, kream-kuntree.png, rl-stafford.png) and whether it was successfully detected/loaded, and require the user to explicitly continue before the theatre scene renders. If any required asset is missing, keep the existing strict missing-asset behavior (full-screen overlay with the exact message) and do not allow continuing.",
+      "featureId": "feature-perform-an-asset-rebinding-step-for-the-centered-hub-logo-image-by-forcing-the-hub-logo-img-element-to-be-removed-from-the-dom-and-reinserted-while-continuing-to-load-only-from-the-exact-filename-logo2-1-png-this-must-not-change-any-layout-sizing-positioning-z-index-halo-ring-styling-or-any-other-visual-styling",
+      "featureTitle": "Perform an asset rebinding step for the centered hub logo image by forcing the hub logo <img> element to be removed from the DOM and reinserted, while continuing to load ONLY from the exact filename \"/logo2-1.png\". This must not change any layout, sizing, positioning, z-index, halo ring styling, or any other visual styling.",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/AssetScanResultsOverlay.tsx",
-        "frontend/src/hooks/useRequiredAssets.ts"
+        "frontend/src/components/CenteredHubLogo.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -17,7 +15,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-5"
+        "REQ-16"
       ],
       "confidence": "high"
     }

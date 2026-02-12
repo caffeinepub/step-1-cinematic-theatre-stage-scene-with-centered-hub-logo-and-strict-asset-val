@@ -1,4 +1,15 @@
+import { useState, useEffect } from 'react';
+
 export function CenteredHubLogo() {
+  // Two-phase render: start with key 0, then switch to key 1 on mount
+  // This forces the <img> element to unmount and remount (asset rebinding)
+  const [imageKey, setImageKey] = useState(0);
+
+  useEffect(() => {
+    // Deterministic asset rebinding: unmount and remount the image element
+    setImageKey(1);
+  }, []);
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
       {/* Very faint halo/orbit ring */}
@@ -16,9 +27,10 @@ export function CenteredHubLogo() {
         }}
       />
 
-      {/* Center hub logo */}
+      {/* Center hub logo - key forces unmount/remount for asset rebinding */}
       <img
-        src="/logo2.png"
+        key={imageKey}
+        src="/logo2-1.png"
         alt="Hub Logo"
         className="relative z-10 select-none"
         style={{

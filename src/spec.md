@@ -1,13 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Add a blocking “Asset Scan Results” screen after successful startup asset validation, listing required asset filenames and gating access to the theatre scene until the user explicitly continues.
+**Goal:** Force an asset rebinding for the centered hub logo image by explicitly removing and reinserting its `<img>` element, while continuing to load only `"/logo2-1.png"` and preserving all existing visuals.
 
 **Planned changes:**
-- Keep the existing strict startup validation for required assets (logo2.png, jacques-johnson.png, kream-kuntree.png, rl-stafford.png) using the current fetch + image-load checks.
-- If any required asset is missing/unloadable, continue showing the existing full-screen MissingAssetOverlay with the exact current message format (and do not show scan results).
-- If all required assets load successfully, show a full-screen blocking “Asset Scan Results” overlay that lists all four filenames with a success/detected status and a clearly labeled Continue button.
-- Prevent rendering of the theatre scene (BackgroundSilhouetteLogo, TheatreStageScene, CenteredHubLogo) until the user clicks Continue on the scan results overlay.
-- Ensure all newly introduced user-facing text for this feature is in English.
+- Add a deterministic code path that unmounts/remounts (remove + reinsert) the centered hub logo `<img>` element to rebind the asset.
+- Ensure the hub logo continues to reference only `src="/logo2-1.png"` with no references to `/logo2.png` or any other filenames.
+- Keep all existing layout and styling unchanged for the hub logo and halo ring (size, centering, z-index, filters/shadows, pointer-events, etc.), and preserve existing asset validation/gating behavior.
 
-**User-visible outcome:** On app load, users see either the existing missing-asset error (if any required file is missing) or an “Asset Scan Results” screen listing all required files as successfully detected, and must click Continue before the theatre scene appears.
+**User-visible outcome:** The centered hub logo looks and behaves exactly the same as before, but the image element is explicitly reinserted to rebind the `"/logo2-1.png"` asset.

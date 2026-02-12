@@ -1,13 +1,18 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
-  "summary": "Build STEP 1 visuals: a full-screen cinematic theatre/stage scene with fixed centered hub logo and background silhouette logo, with strict asset validation and fail-loudly missing-asset overlay.",
+  "projectStateVersion": 19,
+  "summary": "Build STEP 1 visuals: a full-screen cinematic theatre/stage scene with fixed centered hub logo and background silhouette logo, now bound to the uploaded “-1” asset filenames only (logo2-1.png, jacques-johnson-1.png, kream-kuntree-1.png, rl-stafford-1.png), with strict asset validation and fail-loudly missing-asset overlay.",
   "architectural_notes": [
     "Strict STEP 1 scope only: do not add ECG, heartbeat audio, carousel, artist cards, redirects/links, or any additional UI beyond specified visuals.",
     "Asset handling: must use exact filenames; no substitutions or placeholders; missing asset triggers a blocking full-screen overlay with exact message.",
-    "Add an explicit asset rescan step that outputs/list detected project files before continuing (for verification of required exact filenames)."
+    "Add an explicit asset rescan step that outputs/list detected project files before continuing (for verification of required exact filenames).",
+    "Asset filename bindings updated: MUST use only the detected “-1” files (logo2-1.png, jacques-johnson-1.png, kream-kuntree-1.png, rl-stafford-1.png). Do not reference logo2.png or any original filenames; no substitutions/placeholders.",
+    "Support an explicit asset refresh/resync flow for the draft/preview: re-check accessible project image assets and resync when assets are not accessible; never substitute or use placeholders.",
+    "Hub logo asset rebinding: remove and reinsert the centered hub logo image using exactly logo2-1.png; no layout/styling changes."
   ],
-  "known_issues": [],
+  "known_issues": [
+    "Publish/build domain name is invalid: \"step-1:-cinematic-theatre/stage-scene-with-centere\" fails constraint (must be 5–50 chars and only letters/numbers/hyphens)."
+  ],
   "isFixRequest": false,
   "existing_features": [
     {
@@ -49,6 +54,94 @@
         "REQ-5"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-update-the-centered-hub-logo-to-load-only-from-the-exact-filename-logo2-1-png-do-not-reference-logo2-png-anywhere-for-the-center-hub-logo",
+      "title": "Update the centered hub logo to load ONLY from the exact filename \"/logo2-1.png\" (do not reference \"/logo2.png\" anywhere for the center hub logo).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-background-silhouette-logo-to-load-only-from-the-exact-filename-logo2-1-png-do-not-reference-logo2-png-anywhere-for-the-background-silhouette",
+      "title": "Update the background silhouette logo to load ONLY from the exact filename \"/logo2-1.png\" (do not reference \"/logo2.png\" anywhere for the background silhouette).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-strict-startup-asset-validation-and-the-asset-scan-results-listing-to-require-and-validate-only-these-exact-filenames-logo2-1-png-jacques-johnson-1-png-kream-kuntree-1-png-rl-stafford-1-png-do-not-validate-or-reference-the-non-suffixed-filenames-e-g-logo2-png",
+      "title": "Update strict startup asset validation and the Asset Scan Results listing to require and validate ONLY these exact filenames: \"logo2-1.png\", \"jacques-johnson-1.png\", \"kream-kuntree-1.png\", \"rl-stafford-1.png\". Do not validate or reference the non-suffixed filenames (e.g., \"logo2.png\").",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-in-app-asset-refresh-capability-that-re-evaluates-availability-loadability-of-the-exact-required-image-assets-logo2-1-png-jacques-johnson-1-png-kream-kuntree-1-png-rl-stafford-1-png-for-the-current-draft-preview-without-substituting-images-or-generating-placeholders",
+      "title": "Add an in-app “asset refresh” capability that re-evaluates availability/loadability of the exact required image assets (logo2-1.png, jacques-johnson-1.png, kream-kuntree-1.png, rl-stafford-1.png) for the current draft/preview without substituting images or generating placeholders.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-when-re-evaluating-assets-for-refresh-resync-avoid-stale-cached-responses-by-forcing-a-fresh-retrieval-attempt-for-each-required-file-while-still-requesting-the-exact-same-filenames-so-the-preview-reflects-the-current-project-assets",
+      "title": "When re-evaluating assets for refresh/resync, avoid stale/cached responses by forcing a fresh retrieval attempt for each required file (while still requesting the exact same filenames) so the preview reflects the current project assets.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-a-resync-the-draft-preview-with-project-assets-action-when-assets-cannot-be-accessed-implemented-as-a-safe-client-side-resync-e-g-hard-reload-of-the-preview-that-keeps-strict-missing-asset-enforcement-and-does-not-introduce-substitutions-or-placeholders",
+      "title": "Provide a “resync the draft/preview with project assets” action when assets cannot be accessed, implemented as a safe client-side resync (e.g., hard reload of the preview) that keeps strict missing-asset enforcement and does not introduce substitutions or placeholders.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-user-accessible-resync-preview-action-that-rebuilds-the-preview-using-the-current-project-assets-without-changing-any-required-asset-filenames-so-a-user-can-force-a-clean-reload-even-when-no-assets-are-currently-missing",
+      "title": "Add a user-accessible “Resync Preview” action that rebuilds the preview using the current project assets (without changing any required asset filenames), so a user can force a clean reload even when no assets are currently missing.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-that-performing-a-preview-resync-and-or-asset-refresh-cannot-leave-the-app-in-a-stale-state-after-resync-refresh-the-app-must-re-run-the-asset-scan-results-gating-step-and-require-the-user-to-explicitly-continue-again-before-rendering-the-theatre-scene",
+      "title": "Ensure that performing a preview resync (and/or asset refresh) cannot leave the app in a stale state: after resync/refresh, the app must re-run the Asset Scan Results gating step and require the user to explicitly Continue again before rendering the theatre scene.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-resolve-the-publish-build-failure-caused-by-an-invalid-domain-slug-string-currently-reported-as-step-1-cinematic-theatre-stage-scene-with-centere-ensure-that-the-value-used-for-publish-domain-slug-always-satisfies-the-constraint-length-5-50-characters-and-contains-only-letters-numbers-and-hyphens",
+      "title": "Resolve the publish/build failure caused by an invalid domain/slug string (currently reported as `step-1:-cinematic-theatre/stage-scene-with-centere`). Ensure that the value used for publish domain/slug always satisfies the constraint: length 5–50 characters and contains only letters, numbers, and hyphens.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-if-the-app-or-project-metadata-surfaces-a-human-editable-project-name-title-that-can-influence-the-publish-domain-slug-add-a-validation-sanitization-step-so-disallowed-characters-are-either-rejected-with-a-clear-english-error-message-or-automatically-converted-to-hyphens-before-attempting-publish",
+      "title": "If the app or project metadata surfaces a human-editable project name/title that can influence the publish domain/slug, add a validation/sanitization step so disallowed characters are either rejected with a clear English error message or automatically converted to hyphens before attempting publish.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-perform-an-asset-rebinding-step-for-the-centered-hub-logo-image-by-forcing-the-hub-logo-img-element-to-be-removed-from-the-dom-and-reinserted-while-continuing-to-load-only-from-the-exact-filename-logo2-1-png-this-must-not-change-any-layout-sizing-positioning-z-index-halo-ring-styling-or-any-other-visual-styling",
+      "title": "Perform an asset rebinding step for the centered hub logo image by forcing the hub logo <img> element to be removed from the DOM and reinserted, while continuing to load ONLY from the exact filename \"/logo2-1.png\". This must not change any layout, sizing, positioning, z-index, halo ring styling, or any other visual styling.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -59,32 +152,38 @@
       "status": "pending"
     },
     {
-      "id": "AR-2",
-      "summary": "Render fixed center hub logo using logo2.png as dominant centerpiece with correct z-index plus very faint halo/orbit ring.",
+      "id": "AR-6",
+      "summary": "Update all visual bindings to use ONLY uploaded assets: center hub logo uses logo2-1.png (no references to logo2.png or original filenames; no substitutions/placeholders).",
       "reqIds": [],
       "status": "pending"
     },
     {
-      "id": "AR-3",
-      "summary": "Add huge low-opacity background silhouette/shadow version of logo2.png (140–180% viewport width), not tiled.",
+      "id": "AR-7",
+      "summary": "Update strict startup asset validation to require EXACT filenames: logo2-1.png, jacques-johnson-1.png, kream-kuntree-1.png, rl-stafford-1.png; if missing, show full-screen overlay 'MISSING ASSET: [filename] — DO NOT SUBSTITUTE'.",
       "reqIds": [],
       "status": "pending"
     },
     {
-      "id": "AR-4",
-      "summary": "Validate required assets exist (logo2.png, jacques-johnson.png, kream-kuntree.png, rl-stafford.png); if any missing, show full-screen overlay 'MISSING ASSET: [filename] — DO NOT SUBSTITUTE' and do not use placeholders.",
+      "id": "AR-8",
+      "summary": "Update asset rescan/listing step to list detection/load status for the EXACT required '-1' filenames (logo2-1.png, jacques-johnson-1.png, kream-kuntree-1.png, rl-stafford-1.png) before continuing.",
       "reqIds": [],
       "status": "pending"
     },
     {
-      "id": "AR-5",
-      "summary": "Rescan project assets and list all detected files before proceeding (to confirm required exact filenames are present).",
+      "id": "AR-9",
+      "summary": "Add an asset refresh/resync step for the current draft/preview: re-evaluate available image assets (logo2-1.png, jacques-johnson-1.png, kream-kuntree-1.png, rl-stafford-1.png) and, if the preview cannot access them, resync the draft with project assets; do not substitute images or generate placeholders.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Rebind the centered hub logo by removing and reinserting the image, using exactly logo2-1.png only; do not change any layout or styling (asset rebinding step only).",
       "reqIds": [],
       "status": "pending"
     }
   ],
   "gameProjectType": "none",
-  "projectName": "STEP 1: Cinematic theatre/stage scene with centered hub logo and strict asset validation",
+  "projectName": "STEP 1: Cinematic theatre/stage scene with centered hub logo (logo2-1.png) and strict asset validation",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

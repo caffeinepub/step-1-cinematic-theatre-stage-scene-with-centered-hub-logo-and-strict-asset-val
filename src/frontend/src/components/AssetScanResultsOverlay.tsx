@@ -1,12 +1,14 @@
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, RefreshCw, RotateCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface AssetScanResultsOverlayProps {
   assets: Array<{ filename: string; isValid: boolean }>;
   onContinue: () => void;
+  onRefresh?: () => void;
+  onResync?: () => void;
 }
 
-export function AssetScanResultsOverlay({ assets, onContinue }: AssetScanResultsOverlayProps) {
+export function AssetScanResultsOverlay({ assets, onContinue, onRefresh, onResync }: AssetScanResultsOverlayProps) {
   return (
     <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
       <div className="max-w-2xl w-full mx-auto px-8">
@@ -40,7 +42,29 @@ export function AssetScanResultsOverlay({ assets, onContinue }: AssetScanResults
           </div>
         </div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-4">
+          {onRefresh && (
+            <Button
+              onClick={onRefresh}
+              variant="outline"
+              size="lg"
+              className="gap-2"
+            >
+              <RefreshCw className="w-5 h-5" />
+              Refresh Assets
+            </Button>
+          )}
+          {onResync && (
+            <Button
+              onClick={onResync}
+              variant="outline"
+              size="lg"
+              className="gap-2"
+            >
+              <RotateCw className="w-5 h-5" />
+              Resync Preview
+            </Button>
+          )}
           <Button
             onClick={onContinue}
             size="lg"
