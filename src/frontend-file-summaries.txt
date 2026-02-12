@@ -1,0 +1,11 @@
+{
+  "frontend/src/App.tsx": "Main app component that orchestrates asset validation, displays the asset scan results overlay after successful validation (requiring user acknowledgment via Continue button), and renders the full-screen cinematic theatre scene with layered components only after the user proceeds.",
+  "frontend/src/hooks/useRequiredAssets.ts": "Custom hook that validates the existence of all required image assets on startup by attempting to fetch and load each file, returning the first missing filename or null if all assets are present, and exposing per-asset validation results when all checks pass.",
+  "frontend/src/components/MissingAssetOverlay.tsx": "Full-screen blocking overlay component that displays the exact error message \"MISSING ASSET: [filename] — DO NOT SUBSTITUTE\" when a required asset cannot be loaded.",
+  "frontend/src/components/BackgroundSilhouetteLogo.tsx": "Renders a huge, low-opacity, non-tiled silhouette of logo2.png at 160% viewport width in the background layer behind all other scene elements.",
+  "frontend/src/components/TheatreStageScene.tsx": "Full-screen cinematic theatre/stage environment with pure black base, heavy curtains with folds, subtle seating rows, central aisle with warm lights, overhead truss with hanging spotlights, and subtle volumetric light beams.",
+  "frontend/src/components/CenteredHubLogo.tsx": "Fixed centerpiece component that displays logo2.png as a large dominant element at exact viewport center with a very faint halo/orbit ring around it, layered above the theatre scene.",
+  "frontend/src/index.css": "Global styles with OKLCH color system, full-height viewport setup for immersive theatre experience, and custom radial gradient utility.",
+  "frontend/src/hooks/useQueries.ts": "Placeholder file for future React Query hooks (currently empty as STEP 1 requires no backend queries).",
+  "frontend/src/components/AssetScanResultsOverlay.tsx": "Full-screen blocking overlay component that displays a list of all validated required assets with success indicators and a Continue button to proceed to the theatre scene."
+}

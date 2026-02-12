@@ -1,0 +1,21 @@
+{
+  "backend/main.mo": "Empty Motoko actor with no logic.",
+  "feature_evidence.json": "Feature report describing required asset scan results screen and related frontend files.",
+  "frontend-file-summaries.txt": "Prewritten summaries of key frontend files involved in asset validation and theatre scene rendering.",
+  "frontend/index.css": "Tailwind-based global styles defining OKLCH color variables and theming for light and dark modes.",
+  "frontend/index.html": "Base HTML entry point loading the React app through main.tsx.",
+  "frontend/src/App.tsx": "Main app component controlling asset validation, missing-asset handling, scan-results overlay, and theatre scene rendering.",
+  "frontend/src/components/AssetScanResultsOverlay.tsx": "Overlay listing validated assets with success indicators and a Continue button.",
+  "frontend/src/components/BackgroundSilhouetteLogo.tsx": "Background component rendering a faint oversized logo silhouette behind all elements.",
+  "frontend/src/components/CenteredHubLogo.tsx": "Centered hub logo with a faint halo rendered above the theatre scene.",
+  "frontend/src/components/MissingAssetOverlay.tsx": "Full-screen blocking overlay showing the exact missing-asset error message.",
+  "frontend/src/components/TheatreStageScene.tsx": "Cinematic theatre scene with curtains, seating, aisle lighting, and layered atmospheric effects.",
+  "frontend/src/hooks/useActor.ts": "Hook creating and updating a backend actor tied to Internet Identity, refreshing dependent queries on change.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Context and provider managing Internet Identity login, stored identities, and authentication state.",
+  "frontend/src/hooks/useQueries.ts": "Placeholder file for future React Query hooks.",
+  "frontend/src/hooks/useRequiredAssets.ts": "Hook validating required image assets on startup and reporting missing files or full validation results.",
+  "frontend/src/index.css": "Defines Tailwind layers, global CSS variables for light/dark themes, layout resets, and utility additions including a radial gradient class.",
+  "frontend/src/main.tsx": "Bootstraps the React app, wrapping it with React Query and an Internet Identity provider before rendering App.",
+  "frontend/tailwind.config.js": "Configures Tailwind with custom color tokens, extended theming, animations, and plugin integrations for typography, container queries, and animations.",
+  "project_state.json": "Stores project metadata, feature requirements, and constraints for STEP 1 visual implementation and strict asset validation."
+}

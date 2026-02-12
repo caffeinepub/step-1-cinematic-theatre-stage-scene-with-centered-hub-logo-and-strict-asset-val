@@ -1,0 +1,35 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Asset scan results overlay and continue gate before theatre scene render",
+  "requirements": [
+    {
+      "id": "REQ-5",
+      "summary": "Add a blocking Asset Scan Results overlay after strict required-asset validation, listing detection status for each required filename and requiring explicit Continue before rendering the theatre scene.",
+      "acceptanceCriteria": [
+        "On initial app load, the app performs the existing strict required-asset checks (fetch + image load) for the exact filenames: logo2.png, jacques-johnson.png, kream-kuntree.png, rl-stafford.png.",
+        "If any asset is missing/unloadable, the app shows the existing MissingAssetOverlay with the exact text format already implemented and does not show the scan results screen.",
+        "If all assets are present, a full-screen blocking overlay appears that lists all four filenames and indicates they were detected/loaded successfully.",
+        "The theatre scene (BackgroundSilhouetteLogo, TheatreStageScene, CenteredHubLogo) does not render until the user clicks a clearly labeled Continue button on the scan results overlay.",
+        "All user-facing text introduced for this feature is in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useRequiredAssets.ts",
+          "operation": "modify",
+          "description": "Extend the hook to report per-required-asset validation results (for the fixed list: logo2.png, jacques-johnson.png, kream-kuntree.png, rl-stafford.png) while preserving the existing strict behavior: run fetch + image load checks in order, and on first failure set missingAsset and stop further processing; only expose full “all assets validated” results when none are missing."
+        },
+        {
+          "path": "frontend/src/components/AssetScanResultsOverlay.tsx",
+          "operation": "create",
+          "description": "Create a full-screen, blocking “Asset Scan Results” overlay component that lists the four required filenames and a clear success indicator for each when all validations passed, and includes a clearly labeled Continue button to acknowledge and proceed. Do not allow dismissal via backdrop click/escape; keep all introduced user-facing text in English."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the scan results gating into app startup flow: keep showing the existing Loading state during validation; if missingAsset is set, render MissingAssetOverlay exactly as today; if all assets validated, render the new AssetScanResultsOverlay until the user clicks Continue, and only then render the theatre scene (BackgroundSilhouetteLogo, TheatreStageScene, CenteredHubLogo). Ensure the theatre scene components do not render at all before Continue."
+        }
+      ]
+    }
+  ]
+}

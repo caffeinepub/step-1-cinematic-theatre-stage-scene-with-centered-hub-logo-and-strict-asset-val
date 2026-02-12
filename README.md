@@ -1,2 +1,3 @@
-# step-1-cinematic-theatre-stage-scene-with-centered-hub-logo-and-strict-asset-val
-Exported from Caffeine project: STEP 1: Cinematic theatre/stage scene with centered hub logo and strict asset validation
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

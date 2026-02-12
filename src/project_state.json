@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Build STEP 1 visuals: a full-screen cinematic theatre/stage scene with fixed centered hub logo and background silhouette logo, with strict asset validation and fail-loudly missing-asset overlay.",
+  "architectural_notes": [
+    "Strict STEP 1 scope only: do not add ECG, heartbeat audio, carousel, artist cards, redirects/links, or any additional UI beyond specified visuals.",
+    "Asset handling: must use exact filenames; no substitutions or placeholders; missing asset triggers a blocking full-screen overlay with exact message.",
+    "Add an explicit asset rescan step that outputs/list detected project files before continuing (for verification of required exact filenames)."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-implement-strict-startup-asset-validation-for-the-following-exact-filenames-logo2-png-jacques-johnson-png-kream-kuntree-png-rl-stafford-png-if-any-of-these-assets-cannot-be-found-loaded-render-a-full-screen-blocking-overlay-that-says-exactly-missing-asset-filename-do-not-substitute-do-not-render-placeholders-or-substitute-alternative-assets",
+      "title": "Implement strict startup asset validation for the following exact filenames: logo2.png, jacques-johnson.png, kream-kuntree.png, rl-stafford.png. If any of these assets cannot be found/loaded, render a full-screen blocking overlay that says exactly: “MISSING ASSET: [filename] — DO NOT SUBSTITUTE”. Do not render placeholders or substitute alternative assets.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-full-screen-cinematic-theatre-stage-environment-visuals-only-with-a-pure-black-base-background-and-readable-brighter-rendering-avoid-crushed-blacks-the-scene-must-include-heavy-theatre-curtains-on-the-left-and-right-with-deep-folds-a-visible-auditorium-feel-with-subtle-seats-rows-on-both-sides-a-central-aisle-walkway-warm-aisle-lights-along-the-walkway-visible-overhead-rigging-truss-with-hanging-spotlights-and-subtle-volumetric-light-beams-soft-haze-suitable-for-performance-lighting",
+      "title": "Create a full-screen cinematic theatre/stage environment (visuals only) with a pure black base background and readable/brighter rendering (avoid crushed blacks). The scene must include: heavy theatre curtains on the left and right with deep folds; a visible auditorium feel with subtle seats/rows on both sides; a central aisle/walkway; warm aisle lights along the walkway; visible overhead rigging/truss with hanging spotlights; and subtle volumetric light beams (soft haze) suitable for performance lighting.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-render-logo2-png-as-a-large-dominant-fixed-centerpiece-exactly-centered-in-the-viewport-ensure-it-is-layered-above-the-curtains-scene-correct-z-index-add-a-very-faint-halo-orbit-ring-around-the-centered-hub-thin-feathered-low-opacity",
+      "title": "Render logo2.png as a large, dominant, fixed centerpiece exactly centered in the viewport. Ensure it is layered above the curtains/scene (correct z-index). Add a very faint halo/orbit ring around the centered hub (thin, feathered, low opacity).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-huge-background-silhouette-shadow-version-of-logo2-png-behind-the-environment-and-center-hub-logo-it-must-be-a-single-non-tiled-instance-sized-to-approximately-140-180-of-viewport-width-very-low-opacity-dark-and-still-recognizable",
+      "title": "Add a huge background silhouette/shadow version of logo2.png behind the environment and center hub logo. It must be a single, non-tiled instance sized to approximately 140–180% of viewport width, very low opacity, dark, and still recognizable.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-after-startup-asset-validation-completes-present-a-blocking-asset-scan-results-screen-that-lists-each-required-asset-filename-logo2-png-jacques-johnson-png-kream-kuntree-png-rl-stafford-png-and-whether-it-was-successfully-detected-loaded-and-require-the-user-to-explicitly-continue-before-the-theatre-scene-renders-if-any-required-asset-is-missing-keep-the-existing-strict-missing-asset-behavior-full-screen-overlay-with-the-exact-message-and-do-not-allow-continuing",
+      "title": "After startup asset validation completes, present a blocking “Asset Scan Results” screen that lists each required asset filename (logo2.png, jacques-johnson.png, kream-kuntree.png, rl-stafford.png) and whether it was successfully detected/loaded, and require the user to explicitly continue before the theatre scene renders. If any required asset is missing, keep the existing strict missing-asset behavior (full-screen overlay with the exact message) and do not allow continuing.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create full-screen cinematic theatre/stage environment (black background, curtains, seats, aisle with warm lights, overhead truss/spotlights, subtle volumetric beams; readable/no crushed blacks).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Render fixed center hub logo using logo2.png as dominant centerpiece with correct z-index plus very faint halo/orbit ring.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Add huge low-opacity background silhouette/shadow version of logo2.png (140–180% viewport width), not tiled.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Validate required assets exist (logo2.png, jacques-johnson.png, kream-kuntree.png, rl-stafford.png); if any missing, show full-screen overlay 'MISSING ASSET: [filename] — DO NOT SUBSTITUTE' and do not use placeholders.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Rescan project assets and list all detected files before proceeding (to confirm required exact filenames are present).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "STEP 1: Cinematic theatre/stage scene with centered hub logo and strict asset validation",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

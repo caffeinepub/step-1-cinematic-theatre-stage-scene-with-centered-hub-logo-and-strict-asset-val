@@ -1,0 +1,25 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-after-startup-asset-validation-completes-present-a-blocking-asset-scan-results-screen-that-lists-each-required-asset-filename-logo2-png-jacques-johnson-png-kream-kuntree-png-rl-stafford-png-and-whether-it-was-successfully-detected-loaded-and-require-the-user-to-explicitly-continue-before-the-theatre-scene-renders-if-any-required-asset-is-missing-keep-the-existing-strict-missing-asset-behavior-full-screen-overlay-with-the-exact-message-and-do-not-allow-continuing",
+      "featureTitle": "After startup asset validation completes, present a blocking “Asset Scan Results” screen that lists each required asset filename (logo2.png, jacques-johnson.png, kream-kuntree.png, rl-stafford.png) and whether it was successfully detected/loaded, and require the user to explicitly continue before the theatre scene renders. If any required asset is missing, keep the existing strict missing-asset behavior (full-screen overlay with the exact message) and do not allow continuing.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/AssetScanResultsOverlay.tsx",
+        "frontend/src/hooks/useRequiredAssets.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

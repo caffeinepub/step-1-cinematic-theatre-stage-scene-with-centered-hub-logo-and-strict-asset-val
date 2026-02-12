@@ -1,0 +1,41 @@
+{
+  "kind": "build_request",
+  "title": "Add asset rescan screen that lists detected required files before rendering scene",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-5",
+      "text": "After startup asset validation completes, present a blocking “Asset Scan Results” screen that lists each required asset filename (logo2.png, jacques-johnson.png, kream-kuntree.png, rl-stafford.png) and whether it was successfully detected/loaded, and require the user to explicitly continue before the theatre scene renders. If any required asset is missing, keep the existing strict missing-asset behavior (full-screen overlay with the exact message) and do not allow continuing.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "RESCAN PROJECT ASSETS NOW.\nList detected files before continuing."
+        ]
+      },
+      "acceptanceCriteria": [
+        "On initial app load, the app performs the existing strict required-asset checks (fetch + image load) for the exact filenames: logo2.png, jacques-johnson.png, kream-kuntree.png, rl-stafford.png.",
+        "If any asset is missing/unloadable, the app shows the existing MissingAssetOverlay with the exact text format already implemented and does not show the scan results screen.",
+        "If all assets are present, a full-screen blocking overlay appears that lists all four filenames and indicates they were detected/loaded successfully.",
+        "The theatre scene (BackgroundSilhouetteLogo, TheatreStageScene, CenteredHubLogo) does not render until the user clicks a clearly labeled Continue button on the scan results overlay.",
+        "All user-facing text introduced for this feature is in English."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify any files under frontend/src/components/ui or any other paths listed in frontend.immutablePaths.",
+    "Maintain the existing strict asset validation rules: exact filenames only; no placeholders; no substitutions; missing asset remains a blocking error overlay with the exact message format.",
+    "Backend remains single-actor Motoko; no backend changes are required for this feature."
+  ],
+  "nonGoals": [
+    "Adding any new STEP 1 features beyond the asset scan listing/continue gate (e.g., ECG/heartbeat audio, carousels, artist cards, links, redirects).",
+    "Implementing true runtime filesystem directory listing from the browser (only validation of known required filenames is in scope).",
+    "Changing the existing theatre scene visuals or logo layering behaviors."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

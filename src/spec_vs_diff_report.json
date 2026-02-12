@@ -1,0 +1,24 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-12T00:26:09.572Z",
+  "summary": "REQ-5 is largely implemented: the app performs strict startup validation for the four exact filenames, shows the existing MissingAssetOverlay on failure, otherwise presents a blocking “Asset Scan Results” overlay listing the assets and requiring a Continue click before rendering the theatre scene. One additional unrequested behavior (a Loading... screen) was introduced.",
+  "missing_requirements": [],
+  "hallucinated_features": [
+    {
+      "description": "Introduced an explicit full-screen “Loading...” overlay while asset checks run.",
+      "reason": "BuildRequest does not ask for a loading screen; it only specifies behavior for missing-asset overlay vs. scan results overlay gating the scene.",
+      "evidence": [
+        "frontend/src/App.tsx (isChecking branch renders Loading...)"
+      ]
+    }
+  ],
+  "confidence": 0.76,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/App.tsx",
+    "frontend/src/components/AssetScanResultsOverlay.tsx",
+    "frontend/src/hooks/useRequiredAssets.ts",
+    "project_state.json"
+  ]
+}
