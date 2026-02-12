@@ -1,6 +1,38 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Ensure centered hub logo uses /logo2-1.png",
-  "requirements": []
+  "title": "Correct logo2-1.png image path references (remove leading slash)",
+  "requirements": [
+    {
+      "id": "REQ-17",
+      "summary": "Correct CenteredHubLogo image src to use a relative asset path (no leading slash) without changing layout/styling or remount behavior.",
+      "acceptanceCriteria": [
+        "In CenteredHubLogo.tsx, the <img> src string is exactly \"logo2-1.png\" (no leading slash).",
+        "The logo remains exactly centered and layered above the theatre scene as before (no visual/layout change).",
+        "The existing key-based unmount/remount behavior remains intact (no removal of the imageKey logic)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CenteredHubLogo.tsx",
+          "operation": "modify",
+          "description": "Change the hub logo <img> src from \"/logo2-1.png\" to \"logo2-1.png\" only; preserve all existing layout, sizing, positioning, z-index layering, halo/orbit ring styling, and the current key-based unmount/remount (imageKey) behavior."
+        }
+      ]
+    },
+    {
+      "id": "REQ-18",
+      "summary": "Correct BackgroundSilhouetteLogo image src to use a relative asset path (no leading slash) without changing styling.",
+      "acceptanceCriteria": [
+        "In BackgroundSilhouetteLogo.tsx, the <img> src string is exactly \"logo2-1.png\" (no leading slash).",
+        "The silhouette remains a single, centered instance at the same scale and opacity as before (no visual/style change)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/BackgroundSilhouetteLogo.tsx",
+          "operation": "modify",
+          "description": "Change the silhouette <img> src from \"/logo2-1.png\" to \"logo2-1.png\" only; do not change opacity, size, positioning, z-index, or any other styling/structure."
+        }
+      ]
+    }
+  ]
 }

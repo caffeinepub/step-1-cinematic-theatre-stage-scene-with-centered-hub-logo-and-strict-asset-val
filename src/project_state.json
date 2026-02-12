@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 21,
+  "projectStateVersion": 23,
   "summary": "Build STEP 1 visuals: a full-screen cinematic theatre/stage scene with fixed centered hub logo and background silhouette logo, now bound to the uploaded “-1” asset filenames only (logo2-1.png, jacques-johnson-1.png, kream-kuntree-1.png, rl-stafford-1.png), with strict asset validation and fail-loudly missing-asset overlay.",
   "architectural_notes": [
     "Strict STEP 1 scope only: do not add ECG, heartbeat audio, carousel, artist cards, redirects/links, or any additional UI beyond specified visuals.",
@@ -8,12 +8,13 @@
     "Add an explicit asset rescan step that outputs/list detected project files before continuing (for verification of required exact filenames).",
     "Asset filename bindings updated: MUST use only the detected “-1” files (logo2-1.png, jacques-johnson-1.png, kream-kuntree-1.png, rl-stafford-1.png). Do not reference logo2.png or any original filenames; no substitutions/placeholders.",
     "Support an explicit asset refresh/resync flow for the draft/preview: re-check accessible project image assets and resync when assets are not accessible; never substitute or use placeholders.",
-    "Hub logo asset rebinding: remove and reinsert the centered hub logo image using exactly logo2-1.png; no layout/styling changes."
+    "Hub logo asset rebinding: remove and reinsert the centered hub logo image using exactly logo2-1.png; no layout/styling changes.",
+    "Path correction: reference logo asset as \"logo2-1.png\" (no leading \"/\") for both center hub logo and background silhouette; no layout/styling changes."
   ],
   "known_issues": [
     "Publish/build domain name is invalid: \"step-1:-cinematic-theatre/stage-scene-with-centere\" fails constraint (must be 5–50 chars and only letters/numbers/hyphens)."
   ],
-  "isFixRequest": false,
+  "isFixRequest": true,
   "existing_features": [
     {
       "id": "feature-implement-strict-startup-asset-validation-for-the-following-exact-filenames-logo2-png-jacques-johnson-png-kream-kuntree-png-rl-stafford-png-if-any-of-these-assets-cannot-be-found-loaded-render-a-full-screen-blocking-overlay-that-says-exactly-missing-asset-filename-do-not-substitute-do-not-render-placeholders-or-substitute-alternative-assets",
@@ -142,6 +143,22 @@
         "REQ-16"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-update-the-centered-hub-logo-image-reference-in-frontend-src-components-centeredhublogo-tsx-to-use-logo2-1-png-instead-of-logo2-1-png-path-correction-only-do-not-change-any-layout-sizing-positioning-z-index-layering-halo-orbit-ring-styling-or-the-existing-asset-rebinding-behavior-the-key-based-unmount-remount",
+      "title": "Update the centered hub logo image reference in frontend/src/components/CenteredHubLogo.tsx to use \"logo2-1.png\" instead of \"/logo2-1.png\" (path correction only). Do not change any layout, sizing, positioning, z-index layering, halo/orbit ring styling, or the existing asset rebinding behavior (the key-based unmount/remount).",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-background-silhouette-logo-image-reference-in-frontend-src-components-backgroundsilhouettelogo-tsx-to-use-logo2-1-png-instead-of-logo2-1-png-path-correction-only-do-not-change-opacity-size-positioning-or-any-styling",
+      "title": "Update the background silhouette logo image reference in frontend/src/components/BackgroundSilhouetteLogo.tsx to use \"logo2-1.png\" instead of \"/logo2-1.png\" (path correction only). Do not change opacity, size, positioning, or any styling.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -178,6 +195,12 @@
     {
       "id": "AR-10",
       "summary": "Rebind the centered hub logo by removing and reinserting the image, using exactly logo2-1.png only; do not change any layout or styling (asset rebinding step only).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Path correction only: update center hub logo and background silhouette logo image references from \"/logo2-1.png\" to \"logo2-1.png\" (remove leading slash); do not change layout or styling.",
       "reqIds": [],
       "status": "pending"
     }

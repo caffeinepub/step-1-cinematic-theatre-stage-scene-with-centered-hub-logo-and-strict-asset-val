@@ -1,20 +1,45 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-12T01:48:38.408Z",
+  "generatedAt": "2026-02-12T02:29:31.702Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 0,
-    "implemented": 0,
-    "items": []
+    "total": 2,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-17",
+        "summary": "Update the centered hub logo image reference in frontend/src/components/CenteredHubLogo.tsx to use \"logo2-1.png\" instead of \"/logo2-1.png\" (path correction only). Do not change any layout, sizing, positioning, z-index layering, halo/orbit ring styling, or the existing asset rebinding behavior (the key-based unmount/remount).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/CenteredHubLogo.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/CenteredHubLogo.tsx"
+        ]
+      },
+      {
+        "id": "REQ-18",
+        "summary": "Update the background silhouette logo image reference in frontend/src/components/BackgroundSilhouetteLogo.tsx to use \"logo2-1.png\" instead of \"/logo2-1.png\" (path correction only). Do not change opacity, size, positioning, or any styling.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/BackgroundSilhouetteLogo.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/BackgroundSilhouetteLogo.tsx"
+        ]
+      }
+    ]
   },
   "changedFiles": [
     "build-request.json",
     "feature_evidence.json",
     "frontend-implementation-plan.json",
+    "frontend/src/components/BackgroundSilhouetteLogo.tsx",
+    "frontend/src/components/CenteredHubLogo.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

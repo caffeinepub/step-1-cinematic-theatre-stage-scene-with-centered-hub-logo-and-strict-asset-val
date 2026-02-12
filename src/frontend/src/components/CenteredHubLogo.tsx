@@ -30,7 +30,7 @@ export function CenteredHubLogo() {
       {/* Center hub logo - key forces unmount/remount for asset rebinding */}
       <img
         key={imageKey}
-        src="/logo2-1.png"
+        src="logo2-1.png"
         alt="Hub Logo"
         className="relative z-10 select-none"
         style={{
