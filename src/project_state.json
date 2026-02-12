@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 19,
+  "projectStateVersion": 21,
   "summary": "Build STEP 1 visuals: a full-screen cinematic theatre/stage scene with fixed centered hub logo and background silhouette logo, now bound to the uploaded “-1” asset filenames only (logo2-1.png, jacques-johnson-1.png, kream-kuntree-1.png, rl-stafford-1.png), with strict asset validation and fail-loudly missing-asset overlay.",
   "architectural_notes": [
     "Strict STEP 1 scope only: do not add ECG, heartbeat audio, carousel, artist cards, redirects/links, or any additional UI beyond specified visuals.",

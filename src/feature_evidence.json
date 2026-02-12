@@ -1,23 +1,4 @@
 {
   "kind": "feature_evidence_report",
-  "features": [
-    {
-      "featureId": "feature-perform-an-asset-rebinding-step-for-the-centered-hub-logo-image-by-forcing-the-hub-logo-img-element-to-be-removed-from-the-dom-and-reinserted-while-continuing-to-load-only-from-the-exact-filename-logo2-1-png-this-must-not-change-any-layout-sizing-positioning-z-index-halo-ring-styling-or-any-other-visual-styling",
-      "featureTitle": "Perform an asset rebinding step for the centered hub logo image by forcing the hub logo <img> element to be removed from the DOM and reinserted, while continuing to load ONLY from the exact filename \"/logo2-1.png\". This must not change any layout, sizing, positioning, z-index, halo ring styling, or any other visual styling.",
-      "files": [
-        "frontend/src/components/CenteredHubLogo.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-16"
-      ],
-      "confidence": "high"
-    }
-  ]
+  "features": []
 }

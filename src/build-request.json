@@ -1,36 +1,16 @@
 {
   "kind": "build_request",
-  "title": "Rebind centered hub logo image (remove + reinsert) without layout changes",
+  "title": "Use logo2-1.png for centered hub logo",
   "priority": "normal",
-  "requirements": [
-    {
-      "id": "REQ-16",
-      "text": "Perform an asset rebinding step for the centered hub logo image by forcing the hub logo <img> element to be removed from the DOM and reinserted, while continuing to load ONLY from the exact filename \"/logo2-1.png\". This must not change any layout, sizing, positioning, z-index, halo ring styling, or any other visual styling.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-4"
-        ],
-        "quotes": [
-          "Please remove and reinsert the hub logo image.\n\nUse:\nlogo2-1.png\n\nThis is an asset rebinding step.\nDo not change layout or styling."
-        ]
-      },
-      "acceptanceCriteria": [
-        "The centered hub logo still references only src \"/logo2-1.png\" and does not introduce any references to \"/logo2.png\" or other filenames.",
-        "There is an explicit, deterministic code path that unmounts and remounts the hub logo image element (remove + reinsert) to rebind the asset.",
-        "No visual/layout/styling changes occur to the hub logo or halo ring: same size, same centering, same z-index layering, same shadows/filters, same pointer-events behavior.",
-        "Existing asset validation, Asset Scan Results gating, and missing-asset enforcement behavior remains unchanged."
-      ]
-    }
-  ],
+  "requirements": [],
   "constraints": [
-    "Do not change the hub logo layout or styling; this change must be asset rebinding only.",
-    "Continue to use the exact filename \"/logo2-1.png\" for the centered hub logo.",
-    "Keep all user-facing text in English."
+    "All user-facing text must be in English.",
+    "Do not reference or load the centered hub logo from any filename other than \"/logo2-1.png\".",
+    "Do not introduce placeholder images or substitute alternative assets if the required logo asset is missing."
   ],
   "nonGoals": [
-    "Changing the theatre scene visuals, controls UI, or any other assets.",
-    "Adding new image assets or substituting placeholder images."
+    "No changes to the theatre/stage scene visuals beyond ensuring the centered hub logo uses the correct filename.",
+    "No backend changes."
   ],
   "imageRequirements": {
     "required": [],

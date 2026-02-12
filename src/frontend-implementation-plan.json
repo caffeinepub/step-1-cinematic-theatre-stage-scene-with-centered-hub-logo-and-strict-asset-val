@@ -1,24 +1,6 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Rebind centered hub logo image by deterministic unmount/remount without visual changes",
-  "requirements": [
-    {
-      "id": "REQ-16",
-      "summary": "Force the centered hub logo <img> element to be removed and reinserted (asset rebinding) while keeping src strictly \"/logo2-1.png\" and preserving all existing styling/layout and asset validation behavior.",
-      "acceptanceCriteria": [
-        "The centered hub logo still references only src \"/logo2-1.png\" and does not introduce any references to \"/logo2.png\" or other filenames.",
-        "There is an explicit, deterministic code path that unmounts and remounts the hub logo image element (remove + reinsert) to rebind the asset.",
-        "No visual/layout/styling changes occur to the hub logo or halo ring: same size, same centering, same z-index layering, same shadows/filters, same pointer-events behavior.",
-        "Existing asset validation, Asset Scan Results gating, and missing-asset enforcement behavior remains unchanged."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/CenteredHubLogo.tsx",
-          "operation": "modify",
-          "description": "Implement a deterministic asset-rebinding mechanism that explicitly unmounts and remounts only the centered hub logo <img> element (e.g., via a two-phase render toggle or a changing React key triggered once on mount), while keeping the src exactly \"/logo2-1.png\" and leaving all existing classes, inline styles, sizing, positioning, z-index, halo ring styling, and pointer-events behavior unchanged."
-        }
-      ]
-    }
-  ]
+  "title": "Ensure centered hub logo uses /logo2-1.png",
+  "requirements": []
 }

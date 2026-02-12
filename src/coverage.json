@@ -1,34 +1,20 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-12T01:41:08.681Z",
+  "generatedAt": "2026-02-12T01:48:38.408Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 1,
-    "implemented": 1,
-    "items": [
-      {
-        "id": "REQ-16",
-        "summary": "Perform an asset rebinding step for the centered hub logo image by forcing the hub logo <img> element to be removed from the DOM and reinserted, while continuing to load ONLY from the exact filename \"/logo2-1.png\". This must not change any layout, sizing, positioning, z-index, halo ring styling, or any other visual styling.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/CenteredHubLogo.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/CenteredHubLogo.tsx"
-        ]
-      }
-    ]
+    "total": 0,
+    "implemented": 0,
+    "items": []
   },
   "changedFiles": [
     "build-request.json",
     "feature_evidence.json",
-    "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/components/CenteredHubLogo.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",
